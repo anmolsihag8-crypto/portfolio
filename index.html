@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anmol Sihag | AI Growth Marketer & Business Operations Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dash: {
+                            bg: '#F3F4F6',
+                            card: '#FFFFFF',
+                            sidebar: '#FAFAFB',
+                            border: 'rgba(0, 0, 0, 0.07)',
+                            dark: '#111315',
+                            text: '#475569',
+                            muted: '#64748B',
+                            mint: '#10B981',
+                            mintLight: '#ECFDF5',
+                            coral: '#FF7043',
+                            coralLight: '#FFF0EC',
+                            blue: '#2A85FF',
+                            blueLight: '#EFF6FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    },
+                    boxShadow: {
+                        'dash': '0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(0, 0, 0, 0.02)',
+                        'dash-hover': '0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 8px 16px -4px rgba(0, 0, 0, 0.03)',
+                        'pill': '0 4px 12px rgba(16, 185, 129, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #EFEFEF;
+            color: #475569;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 70%, rgba(255, 112, 67, 0.03) 0%, transparent 45%),
+                linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+        }
+
+        /* Card Container Styles */
+        .dash-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.07);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dash-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 8px 16px -4px rgba(0, 0, 0, 0.03);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        /* Sidebar Link Active States */
+        .sidebar-link {
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .sidebar-link:hover, .sidebar-link.active {
+            background: #FFFFFF;
+            color: #111315;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            font-weight: 700;
+        }
+        .sidebar-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20%;
+            height: 60%;
+            width: 3.5px;
+            background-color: #10B981;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .tree-line {
+            border-left: 1.5px dashed rgba(0, 0, 0, 0.12);
+        }
+
+        /* Sidebar Collapsed State Transitions */
+        aside {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        main {
+            transition: margin-left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sidebar-collapsed aside {
+            transform: translateX(-100%);
+        }
+        @media (min-width: 1024px) {
+            .sidebar-collapsed main {
+                margin-left: 0 !important;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #EFEFEF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10B981;
+        }
+
+        /* Scroll Reveal Effect */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skill Bar Fill Animation */
+        .skill-bar-inner {
+            width: 0%;
+            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Slider Controls */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: #E2E8F0;
+            border-radius: 6px;
+            height: 6px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #10B981;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Tab Active States */
+        .chart-tab-btn.active {
+            background: #ECFDF5 !important;
+            border-color: #10B981 !important;
+            color: #065F46 !important;
+        }
+
+        .project-filter.active {
+            background: #111315 !important;
+            color: #FFFFFF !important;
+        }
+
+        /* Ambient Blobs */
+        @keyframes ambientFloat {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(30px, -20px) scale(1.08); }
+        }
+        .ambient-blob {
+            animation: ambientFloat 12s ease-in-out infinite;
+        }
+
+        @keyframes popInBounce {
+            0% { opacity: 0; transform: scale(0.6) translateY(20px); }
+            70% { transform: scale(1.05) translateY(-4px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .pop-in-trigger {
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .pop-in-trigger.popped {
+            animation: popInBounce 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* Floating Sidebar Toggle Button for Desktop/Mobile */
+        .sidebar-toggle-btn {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sidebar-toggle-btn:hover {
+            transform: scale(1.08);
+            background-color: #10B981;
+            color: #FFFFFF;
+        }
+
+        /* Audio Equalizer Waveform Bars Animation */
+        @keyframes eqBar {
+            0%, 100% { height: 4px; }
+            50% { height: 20px; }
+        }
+        .eq-bar {
+            width: 3px;
+            background-color: #10B981;
+            border-radius: 2px;
+            animation: eqBar 0.8s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="selection:bg-[#10B981] selection:text-white flex flex-col lg:flex-row min-h-screen relative">
+
+    <!-- Top Scroll Progress Bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#10B981] via-[#2A85FF] to-[#FF7043] z-50 transition-all duration-150 w-0"></div>
+
+    <!-- Animated Ambient Background Layer -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="ambient-blob absolute top-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-[#10B981]/10 blur-[120px]"></div>
+        <div class="ambient-blob absolute top-[40%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#FF7043]/10 blur-[140px]" style="animation-delay: -4s;"></div>
+        <div class="ambient-blob absolute bottom-[-10%] left-[20%] w-[550px] h-[550px] rounded-full bg-[#2A85FF]/10 blur-[130px]" style="animation-delay: -8s;"></div>
+    </div>
+
+    <!-- Toast Notification Widget -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="dash-card border-l-4 border-l-[#10B981] px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-[#10B981]/15 flex items-center justify-center text-[#10B981] text-sm">
+                <i id="toast-icon" class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <p id="toast-title" class="text-xs font-bold text-[#111315] font-mono">SYSTEM_NOTICE</p>
+                <p id="toast-msg" class="text-xs text-slate-500 font-medium">Notification message</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Sidebar Toggle Button -->
+    <button onclick="toggleSidebar()" class="sidebar-toggle-btn fixed bottom-6 left-6 z-50 w-11 h-11 rounded-2xl bg-[#111315] text-white flex items-center justify-center text-sm border border-slate-700 font-mono transition-all" title="Toggle Sidebar Navigation">
+        <i class="fa-solid fa-bars-staggered"></i>
+    </button>
+
+    <!-- Sidebar Navigation Panel -->
+    <aside id="main-sidebar" class="w-full lg:w-72 bg-[#FAFAFB] border-b lg:border-b-0 lg:border-r border-slate-200 lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:overflow-y-auto z-40 flex-shrink-0 flex flex-col justify-between">
+        <div>
+            <!-- Sidebar Header / Logo -->
+            <div class="p-6 border-b border-slate-200 flex items-center justify-between">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-[#111315] flex items-center justify-center text-white font-black text-sm tracking-widest shadow-md">
+                        AS
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-[#111315] text-base tracking-tight block leading-none">Anmol Sihag</span>
+                        <span class="text-[10px] font-mono text-[#10B981] font-bold">GROWTH & OPERATIONS</span>
+                    </div>
+                </a>
+                
+                <!-- Sidebar Close Toggle Button -->
+                <button onclick="toggleSidebar()" class="text-slate-500 hover:text-slate-900 p-2 rounded-xl hover:bg-slate-200/60 transition-all">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+
+            <!-- Quick Search Bar -->
+            <div class="px-5 py-4 border-b border-slate-200 hidden lg:block">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                    <input type="text" placeholder="Quick search skills or projects..." 
+                        class="w-full bg-slate-100 border border-slate-200 rounded-xl pl-8 pr-3 py-2 text-xs font-mono text-slate-700 placeholder-slate-400 focus:outline-none focus:border-[#10B981] focus:bg-white transition-all"
+                        onkeydown="if(event.key==='Enter') executeAiPrompt(this.value)">
+                </div>
+            </div>
+
+            <!-- Tree-View Navigation Links -->
+            <nav id="sidebar-menu" class="p-4 space-y-1 text-xs font-mono font-semibold hidden lg:block">
+                <div class="px-3 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Overview</div>
+                
+                <a href="#overview" onclick="setActiveNav(this)" class="sidebar-link active flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-600">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-chart-pie text-[#10B981] w-4 text-center"></i>
+                        <span>// OVERVIEW</span>
+                    </div>
+                    <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#ECFDF5] text-[#065F46]">LIVE</span>
+                </a>
+
+                <div class="ml-4 pl-3 tree-line my-1 space-y-1">
+                    <a href="#visualizations" onclick="setActiveNav(this)" class="sidebar-link flex items-center justify-between px-3 py-2 rounded-xl text-slate-500 hover:text-slate-900">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-xs text-slate-400"></i>
+                            <span>Metrics Engine</span>
+                        </div>
+                    </a>
+                    <a href="#workflow" onclick="setActiveNav(this)" class="sidebar-link flex items-center justify-between px-3 py-2 rounded-xl text-slate-500 hover:text-slate-900">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-gears text-xs text-slate-400"></i>
+                            <span>3-Step Process</span>
+                        </div>
+                        <span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#FFF0EC] text-[#C2410C]">3</span>
+                    </a>
+                    <a href="#pipeline" onclick="setActiveNav(this)" class="sidebar-link flex items-center justify-between px-3 py-2 rounded-xl text-slate-500 hover:text-slate-900">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-diagram-project text-xs text-slate-400"></i>
+                            <span>GTM Pipeline</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="px-3 pt-3 pb-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Execution & Skills</div>
+
+                <a href="#simulator" onclick="setActiveNav(this)" class="sidebar-link flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-600">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-sliders text-[#2A85FF] w-4 text-center"></i>
+                        <span>// ROI ENGINE</span>
+                    </div>
+                </a>
+
+                <a href="#ai-studio" onclick="setActiveNav(this)" class="sidebar-link flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-600">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-clapperboard text-[#FF7043] w-4 text-center"></i>
+                        <span>// AI VIDEO STUDIO</span>
+                    </div>
+                    <span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#FFF0EC] text-[#C2410C]">15+</span>
+                </a>
+
+                <a href="#projects" onclick="setActiveNav(this)" class="sidebar-link flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-600">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-folder-open text-[#FF7043] w-4 text-center"></i>
+                        <span>// PROJECTS</span>
+                    </div>
+                    <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-200 text-slate-700">4</span>
+                </a>
+
+                <a href="#experience" onclick="setActiveNav(this)" class="sidebar-link flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-600">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-timeline text-[#10B981] w-4 text-center"></i>
+                        <span>// TIMELINE</span>
+                    </div>
+                </a>
+
+                <a href="#skills" onclick="setActiveNav(this)" class="sidebar-link flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-600">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-square-poll-vertical text-[#2A85FF] w-4 text-center"></i>
+                        <span>// TOOLS & CERTS</span>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Sidebar Footer Status Card -->
+        <div class="p-4 border-t border-slate-200 hidden lg:block">
+            <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
+                <div class="relative flex items-center justify-center">
+                    <span class="w-3 h-3 rounded-full bg-[#10B981]"></span>
+                    <span class="absolute w-3 h-3 rounded-full bg-[#10B981] animate-ping opacity-75"></span>
+                </div>
+                <div class="overflow-hidden">
+                    <p class="text-[11px] font-bold text-[#111315] leading-tight truncate">Growth & Operations</p>
+                    <p class="text-[10px] text-slate-500 font-mono truncate">Available for Hire</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Dashboard Area -->
+    <main class="flex-1 lg:ml-72 min-w-0 pb-16">
+
+        <!-- Top Header Navigation Bar -->
+        <header class="hidden lg:flex items-center justify-between px-8 py-4 border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-30">
+            <div class="flex items-center gap-3 text-xs font-mono">
+                <button onclick="toggleSidebar()" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center mr-2 transition-all" title="Toggle Navigation Sidebar">
+                    <i class="fa-solid fa-sidebar text-xs"></i>
+                </button>
+                <span class="text-slate-400">ANMOL SIHAG PORTFOLIO</span>
+                <span class="text-slate-300">/</span>
+                <span class="text-[#111315] font-bold">OVERVIEW</span>
+            </div>
+
+            <div class="flex items-center gap-3 font-mono text-xs">
+                <button onclick="copyContactInfo()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all flex items-center gap-2 border border-slate-200">
+                    <i class="fa-regular fa-copy text-[#10B981]"></i>
+                    <span>Copy Email</span>
+                </button>
+                <a href="#contact" class="px-4 py-2 rounded-xl bg-[#111315] hover:bg-slate-800 text-white font-bold transition-all flex items-center gap-2 shadow-sm">
+                    <span>Connect Now</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- Hero Overview Section -->
+        <section id="overview" class="p-6 lg:p-8 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto space-y-8">
+                
+                <!-- Status Badge -->
+                <div class="reveal-item">
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#ECFDF5] border border-[#10B981]/30 text-[#065F46] text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+                        <span class="font-bold">AI GROWTH MARKETING & BUSINESS OPERATIONS</span>
+                        <span class="text-slate-300">|</span>
+                        <span class="text-slate-600">MBA Candidate • LPU</span>
+                    </div>
+                </div>
+
+                <!-- Hero Headline Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6 reveal-item">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-[#111315] tracking-tight leading-[1.15]">
+                            Architecting <br>
+                            <span class="text-[#10B981] inline-block">Data-Driven Growth</span> <br>
+                            & Scaled Operations.
+                        </h1>
+
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl">
+                            Combining AI video ad creation, targeted search SEO, vendor negotiations, and financial audit precision to calculate risk, structure campaigns, and scale performance.
+                        </p>
+
+                        <!-- AI Prompt Input Widget -->
+                        <div class="bg-white p-2 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-2 max-w-lg">
+                            <div class="w-8 h-8 rounded-xl bg-[#ECFDF5] text-[#10B981] flex items-center justify-center text-xs flex-shrink-0">
+                                <i class="fa-solid fa-sparkles"></i>
+                            </div>
+                            <input type="text" id="ai-prompt-input" placeholder="Ask AI: 'Show Zynkly campaign results' or 'Skills'..." 
+                                class="bg-transparent border-none outline-none text-xs font-mono text-slate-800 placeholder-slate-400 w-full"
+                                onkeydown="if(event.key==='Enter') executeAiPrompt(this.value)">
+                            <button onclick="executeAiPrompt(document.getElementById('ai-prompt-input').value)" class="bg-[#111315] hover:bg-slate-800 text-white px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex-shrink-0">
+                                Ask AI
+                            </button>
+                        </div>
+
+                        <!-- AI Response Box -->
+                        <div id="ai-prompt-response" class="hidden p-4 rounded-2xl bg-white border border-[#10B981]/40 text-xs font-mono text-slate-700 max-w-lg shadow-md">
+                            <!-- Filled dynamically -->
+                        </div>
+
+                        <div class="flex flex-wrap gap-3 pt-2">
+                            <a href="#visualizations" class="bg-[#10B981] hover:bg-[#059669] text-white font-extrabold px-6 py-3.5 rounded-xl text-xs font-mono transition-all flex items-center gap-2 shadow-pill">
+                                <span>EXPLORE METRICS</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="#projects" class="bg-white hover:bg-slate-50 text-[#111315] px-6 py-3.5 rounded-xl text-xs font-mono font-bold border border-slate-200 transition-all shadow-sm">
+                                LIVE PROJECTS
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Profile Showcase Card with Real Photo -->
+                    <div class="lg:col-span-5 reveal-item">
+                        <div class="dash-card p-6 relative bg-white space-y-5">
+                            
+                            <!-- Card Header Bar -->
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-[#10B981]"></span>
+                                    <span class="text-xs font-mono text-slate-500 font-bold ml-2">ANMOL_PROFILE</span>
+                                </div>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46]">VERIFIED</span>
+                            </div>
+
+                            <!-- Real-World Profile Image Header -->
+                            <div class="flex flex-col sm:flex-row items-center gap-6 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                                <div class="w-36 h-36 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border-4 border-[#10B981] flex-shrink-0 bg-slate-200 shadow-xl relative group">
+                                    <img src="anmol.jpg" alt="Anmol Sihag" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                </div>
+                                <div class="space-y-2 text-center sm:text-left">
+                                    <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] inline-block">MBA CANDIDATE</span>
+                                    <h3 class="text-2xl sm:text-3xl font-black text-[#111315] tracking-tight">Anmol Sihag</h3>
+                                    <p class="text-xs font-mono text-slate-500 leading-snug">AI Growth Marketer & Business Operations Specialist</p>
+                                    <p class="text-xs font-mono text-[#10B981] font-bold pt-1 flex items-center justify-center sm:justify-start gap-1.5">
+                                        <i class="fa-solid fa-circle-check"></i>Available for Hire
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Stat Highlight Blocks -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="p-3.5 bg-[#ECFDF5] border border-[#10B981]/20 rounded-2xl pop-in-trigger">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[10px] font-mono font-bold text-[#065F46] uppercase">Engagement</span>
+                                        <span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#10B981] text-white">↑ 20.0%</span>
+                                    </div>
+                                    <span class="text-2xl font-black text-[#111315] font-mono">+20%</span>
+                                    <svg class="w-full h-6 mt-1" viewBox="0 0 100 25" fill="none">
+                                        <path d="M0 20 L25 18 L50 12 L75 8 L100 2" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+
+                                <div class="p-3.5 bg-[#FFF0EC] border border-[#FF7043]/20 rounded-2xl pop-in-trigger">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[10px] font-mono font-bold text-[#C2410C] uppercase">Brand Reach</span>
+                                        <span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#FF7043] text-white">↑ 25.0%</span>
+                                    </div>
+                                    <span class="text-2xl font-black text-[#111315] font-mono">+25%</span>
+                                    <svg class="w-full h-6 mt-1" viewBox="0 0 100 25" fill="none">
+                                        <path d="M0 22 L25 19 L50 14 L75 6 L100 3" stroke="#FF7043" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Action Footer -->
+                            <a href="https://www.linkedin.com/in/anmol-sihag04" target="_blank" class="w-full bg-[#111315] hover:bg-slate-800 text-white font-mono text-xs font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm">
+                                <i class="fa-brands fa-linkedin text-[#10B981]"></i>
+                                <span>LinkedIn Profile</span>
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Top Metric Cards Strip -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+                    
+                    <div class="dash-card p-5 dash-card-hover reveal-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <i class="fa-solid fa-chart-line text-[#10B981] text-lg"></i>
+                            <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-[#ECFDF5] text-[#065F46]">↑ 20.0%</span>
+                        </div>
+                        <div class="text-3xl font-black text-[#111315] font-mono mb-0.5">
+                            +<span class="counter-number" data-target="20">0</span>%
+                        </div>
+                        <p class="text-xs font-bold text-slate-800">Engagement Boost</p>
+                        <p class="text-[10px] text-slate-500 mt-1">15+ AI promotional videos</p>
+                    </div>
+
+                    <div class="dash-card p-5 dash-card-hover reveal-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <i class="fa-solid fa-bullhorn text-[#FF7043] text-lg"></i>
+                            <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-[#FFF0EC] text-[#C2410C]">↑ 25.0%</span>
+                        </div>
+                        <div class="text-3xl font-black text-[#111315] font-mono mb-0.5">
+                            +<span class="counter-number" data-target="25">0</span>%
+                        </div>
+                        <p class="text-xs font-bold text-slate-800">Brand Reach Growth</p>
+                        <p class="text-[10px] text-slate-500 mt-1">5+ targeted digital ad campaigns</p>
+                    </div>
+
+                    <div class="dash-card p-5 dash-card-hover reveal-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <i class="fa-solid fa-boxes-packing text-[#2A85FF] text-lg"></i>
+                            <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-[#EFF6FF] text-[#1E40AF]">SOURCING</span>
+                        </div>
+                        <div class="text-3xl font-black text-[#111315] font-mono mb-0.5">
+                            <span class="counter-number" data-target="10">0</span>+
+                        </div>
+                        <p class="text-xs font-bold text-slate-800">Local Vendors</p>
+                        <p class="text-[10px] text-slate-500 mt-1">Brand the Item venture</p>
+                    </div>
+
+                    <div class="dash-card p-5 dash-card-hover reveal-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <i class="fa-solid fa-file-invoice text-[#10B981] text-lg"></i>
+                            <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-[#ECFDF5] text-[#065F46]">AUDIT</span>
+                        </div>
+                        <div class="text-3xl font-black text-[#111315] font-mono mb-0.5">
+                            <span class="counter-number" data-target="50">0</span>+
+                        </div>
+                        <p class="text-xs font-bold text-slate-800">Financial Reconciliations</p>
+                        <p class="text-[10px] text-slate-500 mt-1">Excel statutory accounting</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Performance Metrics & Visualizations Section -->
+        <section id="visualizations" class="p-6 lg:p-8 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto space-y-8">
+                
+                <div class="reveal-item">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] uppercase">VISUAL ANALYTICS</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111315] mt-2 tracking-tight">
+                        Interactive Campaign Performance Charts
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500">
+                        Dynamic chart dashboards showcasing campaign trajectories, vendor allocation channels, and SEO keyword densities.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    
+                    <!-- Left Tab Buttons -->
+                    <div class="lg:col-span-4 space-y-3 reveal-item">
+                        <button onclick="switchChart('growth')" id="chart-tab-growth" class="chart-tab-btn active w-full p-4 text-left rounded-2xl dash-card transition-all flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-[#10B981] font-bold block">01 • CAMPAIGN TRAJECTORY</span>
+                                <h4 class="text-sm font-bold text-[#111315]">Zynkly AI Video Reach & Lift</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Weekly performance trends.</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-[#10B981]"></i>
+                        </button>
+
+                        <button onclick="switchChart('sourcing')" id="chart-tab-sourcing" class="chart-tab-btn w-full p-4 text-left rounded-2xl dash-card transition-all flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-slate-400 font-bold block">02 • VENDOR CHANNELS</span>
+                                <h4 class="text-sm font-bold text-[#111315]">Brand the Item Suppliers</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Distribution stream share.</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
+                        </button>
+
+                        <button onclick="switchChart('seo')" id="chart-tab-seo" class="chart-tab-btn w-full p-4 text-left rounded-2xl dash-card transition-all flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-slate-400 font-bold block">03 • SEO INTENT DENSITY</span>
+                                <h4 class="text-sm font-bold text-[#111315]">50+ Keyword Cluster Density</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Search query breakdown.</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Right Chart Canvas Container -->
+                    <div class="lg:col-span-8 reveal-item">
+                        <div class="dash-card rounded-2xl p-6 bg-white">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+                                <span class="font-mono text-xs font-bold text-[#111315]" id="chart-title-text">ZYNKLY_CAMPAIGN_TRAJECTORY.DAT</span>
+                                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#ECFDF5] text-[#065F46]">LIVE ENGINE</span>
+                            </div>
+
+                            <div class="relative w-full h-[300px] sm:h-[340px]">
+                                <canvas id="performanceChart"></canvas>
+                            </div>
+
+                            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                                <span id="chart-footnote"><i class="fa-solid fa-circle-info text-[#10B981] mr-1"></i> Interactive Chart Engine</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Workflow Framework Section -->
+        <section id="workflow" class="p-6 lg:p-8 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto space-y-8">
+                
+                <div class="reveal-item">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#FFF0EC] text-[#C2410C] uppercase">SYSTEM FRAMEWORK</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111315] mt-2 tracking-tight">
+                        3-Step Growth & Execution Framework
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500">
+                        Select each phase below to inspect how research, content generation, and financial auditing converge.
+                    </p>
+                </div>
+
+                <!-- Step Navigator Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    
+                    <div onclick="selectStep(1)" id="step-card-1" class="dash-card p-6 cursor-pointer transition-all hover:border-[#10B981] reveal-item">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-[#ECFDF5] text-[#10B981] flex items-center justify-center font-bold text-base">01</span>
+                            <i class="fa-solid fa-magnifying-glass-chart text-[#10B981]"></i>
+                        </div>
+                        <span class="text-[10px] font-mono text-[#10B981] font-bold block mb-1">Step 1 • Research</span>
+                        <h3 class="text-base font-bold text-[#111315] mb-2">Audience & Sourcing</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Field research across 100+ respondents and term negotiations with 10+ Rajasthan suppliers.
+                        </p>
+                    </div>
+
+                    <div onclick="selectStep(2)" id="step-card-2" class="dash-card p-6 cursor-pointer transition-all hover:border-[#FF7043] reveal-item">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-[#FFF0EC] text-[#FF7043] flex items-center justify-center font-bold text-base">02</span>
+                            <i class="fa-solid fa-wand-magic-sparkles text-[#FF7043]"></i>
+                        </div>
+                        <span class="text-[10px] font-mono text-[#FF7043] font-bold block mb-1">Step 2 • Content Engine</span>
+                        <h3 class="text-base font-bold text-[#111315] mb-2">AI Video & Campaigns</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Crafted 15+ AI promotional videos for Zynkly and 30+ visual creatives with social calendars.
+                        </p>
+                    </div>
+
+                    <div onclick="selectStep(3)" id="step-card-3" class="dash-card p-6 cursor-pointer transition-all hover:border-[#2A85FF] reveal-item">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2A85FF] flex items-center justify-center font-bold text-base">03</span>
+                            <i class="fa-solid fa-calculator text-[#2A85FF]"></i>
+                        </div>
+                        <span class="text-[10px] font-mono text-[#2A85FF] font-bold block mb-1">Step 3 • Auditing</span>
+                        <h3 class="text-base font-bold text-[#111315] mb-2">Financial Reconciliations</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Audited 20+ statutory client files and reconciled 50+ Excel entries with CA Davender Goyal.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Terminal Execution Feed -->
+                <div class="dash-card p-6 bg-[#111315] text-white reveal-item">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#10B981]"></span>
+                            <span class="font-mono text-xs text-slate-300 ml-2" id="terminal-step-title">WORKFLOW_LOG.STEP_01</span>
+                        </div>
+                        <span class="text-xs font-mono text-[#10B981] font-bold" id="terminal-badge">LIVE TERMINAL FEED</span>
+                    </div>
+
+                    <div id="terminal-content" class="font-mono text-xs space-y-2 text-slate-200">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- GTM Pipeline Section -->
+        <section id="pipeline" class="p-6 lg:p-8 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto space-y-8">
+                
+                <div class="reveal-item">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] uppercase">PIPELINE DIAGRAM</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111315] mt-2 tracking-tight">
+                        Go-To-Market & Sourcing Pipeline
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500">
+                        Visual roadmap executed during the "Brand the Item" live commercial venture.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 reveal-item">
+                    
+                    <div class="dash-card p-5 dash-card-hover">
+                        <div class="w-10 h-10 rounded-xl bg-[#ECFDF5] text-[#10B981] flex items-center justify-center font-bold text-sm mb-3">
+                            01
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400 uppercase font-bold block">Phase 1</span>
+                        <h4 class="text-sm font-bold text-[#111315] mb-1">Vendor Sourcing</h4>
+                        <p class="text-xs text-slate-500">Negotiated terms with 10+ local Rajasthan suppliers.</p>
+                    </div>
+
+                    <div class="dash-card p-5 dash-card-hover">
+                        <div class="w-10 h-10 rounded-xl bg-[#FFF0EC] text-[#FF7043] flex items-center justify-center font-bold text-sm mb-3">
+                            02
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400 uppercase font-bold block">Phase 2</span>
+                        <h4 class="text-sm font-bold text-[#111315] mb-1">Quality Audit</h4>
+                        <p class="text-xs text-slate-500">Evaluated unit economics and inventory standards.</p>
+                    </div>
+
+                    <div class="dash-card p-5 dash-card-hover">
+                        <div class="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2A85FF] flex items-center justify-center font-bold text-sm mb-3">
+                            03
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400 uppercase font-bold block">Phase 3</span>
+                        <h4 class="text-sm font-bold text-[#111315] mb-1">Brand Identity</h4>
+                        <p class="text-xs text-slate-500">Formulated product line positioning and packaging.</p>
+                    </div>
+
+                    <div class="dash-card p-5 dash-card-hover">
+                        <div class="w-10 h-10 rounded-xl bg-[#ECFDF5] text-[#10B981] flex items-center justify-center font-bold text-sm mb-3">
+                            04
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400 uppercase font-bold block">Phase 4</span>
+                        <h4 class="text-sm font-bold text-[#111315] mb-1">3 Distribution Streams</h4>
+                        <p class="text-xs text-slate-500">Executed multi-channel offline and digital sales.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ROI Simulator Engine Section -->
+        <section id="simulator" class="p-6 lg:p-8 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto space-y-8">
+                
+                <div class="reveal-item">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#FFF0EC] text-[#C2410C] uppercase">ROI ENGINE</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111315] mt-2 tracking-tight">
+                        Interactive Campaign Performance Calculator
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500">
+                        Adjust variables to calculate projected reach, engagement, and ROI multipliers based on Anmol's campaigns.
+                    </p>
+                </div>
+
+                <div class="dash-card p-6 sm:p-8 max-w-3xl mx-auto reveal-item">
+                    <div class="space-y-6">
+                        
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-2">
+                                <span class="text-slate-700 font-semibold">Monthly Campaign Budget</span>
+                                <span class="text-[#10B981] font-bold" id="budget-val">₹25,000</span>
+                            </div>
+                            <input type="range" id="budget-slider" min="5000" max="100000" step="5000" value="25000" 
+                                class="w-full cursor-pointer" oninput="updateSimulator()">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-2">
+                                <span class="text-slate-700 font-semibold">AI Video Assets Produced</span>
+                                <span class="text-[#FF7043] font-bold" id="videos-val">15 Videos</span>
+                            </div>
+                            <input type="range" id="videos-slider" min="5" max="50" step="1" value="15" 
+                                class="w-full cursor-pointer" oninput="updateSimulator()">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-2">
+                                <span class="text-slate-700 font-semibold">Distribution Channels</span>
+                                <span class="text-[#2A85FF] font-bold" id="channels-val">3 Channels</span>
+                            </div>
+                            <input type="range" id="channels-slider" min="1" max="5" step="1" value="3" 
+                                class="w-full cursor-pointer" oninput="updateSimulator()">
+                        </div>
+
+                    </div>
+
+                    <!-- Computed Metrics Display -->
+                    <div class="mt-8 pt-6 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                            <span class="text-[10px] font-mono text-slate-400 block mb-1">Est. Reach</span>
+                            <span class="text-xl font-extrabold text-[#111315] font-mono" id="calc-reach">62,500</span>
+                            <span class="text-[10px] text-[#10B981] font-bold block mt-1">+25% Reach Boost</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                            <span class="text-[10px] font-mono text-slate-400 block mb-1">Est. Engagement</span>
+                            <span class="text-xl font-extrabold text-[#111315] font-mono" id="calc-engagement">12,500</span>
+                            <span class="text-[10px] text-[#FF7043] font-bold block mt-1">+20% Engagement</span>
+                        </div>
+
+                        <div class="col-span-2 sm:col-span-1 p-4 rounded-xl bg-[#ECFDF5] border border-[#10B981]/30 text-center">
+                            <span class="text-[10px] font-mono text-[#065F46] font-bold block mb-1">ROI Ratio</span>
+                            <span class="text-xl font-extrabold text-[#10B981] font-mono" id="calc-roi">4.2x</span>
+                            <span class="text-[10px] text-[#065F46] block mt-1">Multiplier</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interactive AI Video Showreel Studio -->
+        <section id="ai-studio" class="p-6 lg:p-8 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto space-y-8">
+                
+                <div class="reveal-item">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] uppercase">AI SHOWREEL STUDIO</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111315] mt-2 tracking-tight">
+                        Zynkly AI Promotional Video Showreel
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500">
+                        Interactive preview studio of the 15+ AI-generated promotional videos engineered for Zynkly Private Limited.
+                    </p>
+                </div>
+
+                <div class="dash-card p-6 sm:p-8 bg-[#111315] text-white reveal-item">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        
+                        <!-- Video Player Preview Container -->
+                        <div class="lg:col-span-7 space-y-4">
+                            <div class="relative aspect-video rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl group">
+                                <!-- HD Video Thumbnail -->
+                                <img id="studio-video-thumb" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Zynkly AI Video Preview" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-all duration-500">
+                                
+                                <!-- Video Overlay HUD -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 p-5 flex flex-col justify-between">
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-[#10B981] text-black">ZYNKLY_AI_PROMO.MP4</span>
+                                        <!-- Equalizer Animated Waveform -->
+                                        <div class="flex items-end gap-1 h-5">
+                                            <div class="eq-bar"></div>
+                                            <div class="eq-bar" style="animation-delay: -0.2s;"></div>
+                                            <div class="eq-bar" style="animation-delay: -0.4s;"></div>
+                                            <div class="eq-bar" style="animation-delay: -0.6s;"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Center Play Toggle Button -->
+                                    <div class="flex justify-center">
+                                        <button onclick="toggleStudioPlayback()" id="studio-play-btn" class="w-14 h-14 rounded-full bg-[#10B981] hover:bg-[#059669] text-white flex items-center justify-center text-xl shadow-lg transition-all hover:scale-110">
+                                            <i class="fa-solid fa-play ml-1"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="flex items-center justify-between text-xs font-mono">
+                                        <span id="studio-clip-title" class="text-white font-bold">Clip 01: Product Teaser Ad</span>
+                                        <span class="text-[#10B981] font-bold">+20% Engagement</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Selector & Metrics Sidebar -->
+                        <div class="lg:col-span-5 space-y-4 font-mono text-xs">
+                            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+                                <span class="text-slate-400 text-[10px] uppercase font-bold">SELECTED PROMPT PARAMETERS</span>
+                                <p class="text-slate-200 text-xs italic">"Generate high-tech dynamic SaaS product showcase highlighting automated workflow automation."</p>
+                            </div>
+
+                            <div class="space-y-2">
+                                <span class="text-slate-400 text-[10px] uppercase font-bold block mb-2">SELECT CAMPAIGN CLIP</span>
+                                
+                                <button onclick="selectStudioClip(1)" class="w-full p-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-left flex items-center justify-between text-slate-200">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fa-solid fa-film text-[#10B981]"></i>
+                                        <span>01 • Product Teaser Ad</span>
+                                    </div>
+                                    <span class="text-[10px] text-[#10B981] font-bold">15s</span>
+                                </button>
+
+                                <button onclick="selectStudioClip(2)" class="w-full p-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-left flex items-center justify-between text-slate-200">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fa-solid fa-film text-[#FF7043]"></i>
+                                        <span>02 • Feature Highlight Clip</span>
+                                    </div>
+                                    <span class="text-[10px] text-[#FF7043] font-bold">30s</span>
+                                </button>
+
+                                <button onclick="selectStudioClip(3)" class="w-full p-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-left flex items-center justify-between text-slate-200">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fa-solid fa-film text-[#2A85FF]"></i>
+                                        <span>03 • Social Media Story Ad</span>
+                                    </div>
+                                    <span class="text-[10px] text-[#2A85FF] font-bold">10s</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Featured Projects Showcase Section -->
+        <section id="projects" class="p-6 lg:p-8 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto space-y-8">
+                
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 reveal-item">
+                    <div>
+                        <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] uppercase">PORTFOLIO</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111315] mt-2 tracking-tight">
+                            Featured Projects & Initiatives
+                        </h2>
+                    </div>
+
+                    <!-- Category Filter Buttons -->
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <button onclick="filterProjects('all')" class="project-filter active bg-white text-slate-700 font-bold px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-sm transition-all">All</button>
+                        <button onclick="filterProjects('marketing')" class="project-filter bg-white text-slate-600 px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-sm transition-all">Digital Marketing</button>
+                        <button onclick="filterProjects('brand')" class="project-filter bg-white text-slate-600 px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-sm transition-all">Brand Strategy</button>
+                        <button onclick="filterProjects('community')" class="project-filter bg-white text-slate-600 px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-sm transition-all">Community</button>
+                    </div>
+                </div>
+
+                <!-- Projects Cards Grid with Real Imagery -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <div class="project-card brand dash-card overflow-hidden dash-card-hover flex flex-col justify-between reveal-item">
+                        <div class="h-44 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Brand the Item" class="w-full h-full object-cover hover:scale-105 transition-all duration-500">
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] backdrop-blur-md">Aug-Sep 2025</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#111315] mb-2">Brand the Item</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                                Live commercial project sourcing products from 10+ Rajasthan suppliers and evaluating sales across 3 distribution streams.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4 text-[10px] font-mono">
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg">10+ Vendors</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg">3 Channels</span>
+                            </div>
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-slate-400">GTM & Sourcing</span>
+                                <button onclick="openProjectModal('brand-the-item')" class="text-xs font-bold text-[#10B981] font-mono">DETAILS <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card marketing dash-card overflow-hidden dash-card-hover flex flex-col justify-between reveal-item">
+                        <div class="h-44 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Zynkly Campaign" class="w-full h-full object-cover hover:scale-105 transition-all duration-500">
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-[#FFF0EC] text-[#C2410C] backdrop-blur-md">Jun-Jul 2026</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#111315] mb-2">Zynkly AI Video Campaigns</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                                Conducted research among 100+ respondents and crafted 15+ AI promo videos for Zynkly (+20% engagement, +25% reach).
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4 text-[10px] font-mono">
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg">100+ Surveyed</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg">15+ AI Videos</span>
+                            </div>
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-slate-400">Zynkly Pvt Ltd</span>
+                                <button onclick="openProjectModal('zynkly-campaign')" class="text-xs font-bold text-[#FF7043] font-mono">DETAILS <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card marketing dash-card overflow-hidden dash-card-hover flex flex-col justify-between reveal-item">
+                        <div class="h-44 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80" alt="Digital Marketing Suite" class="w-full h-full object-cover hover:scale-105 transition-all duration-500">
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] backdrop-blur-md">Jul-Aug 2023</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#111315] mb-2">Digital Marketing Suite</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                                Designed 30+ Canva creatives, 4-week Instagram/Facebook calendars, and keyword research across 50+ SEO clusters.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4 text-[10px] font-mono">
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg">30+ Creatives</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg">50+ SEO Terms</span>
+                            </div>
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-slate-400">Social Media & SEO</span>
+                                <button onclick="openProjectModal('digital-marketing-suite')" class="text-xs font-bold text-[#10B981] font-mono">DETAILS <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card community dash-card overflow-hidden dash-card-hover flex flex-col justify-between reveal-item">
+                        <div class="h-44 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="GodWish Foundation" class="w-full h-full object-cover hover:scale-105 transition-all duration-500">
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-[#FFF0EC] text-[#C2410C] backdrop-blur-md">Jun-Jul 2023</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#111315] mb-2">GodWish Foundation Drive</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                                Managed community drives reaching 500+ residents, organized 5+ tree plantations, and supported 200+ families.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4 text-[10px] font-mono">
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg">500+ Reached</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg">200+ Families</span>
+                            </div>
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-slate-400">Community Outreach</span>
+                                <button onclick="openProjectModal('godwish-project')" class="text-xs font-bold text-[#FF7043] font-mono">DETAILS <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section id="experience" class="p-6 lg:p-8 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto space-y-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    
+                    <!-- Experience Timeline Column -->
+                    <div class="lg:col-span-7 space-y-6 reveal-item">
+                        <div>
+                            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] uppercase">TIMELINE</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111315] mt-2 tracking-tight">
+                                Professional Experience
+                            </h2>
+                        </div>
+
+                        <div class="relative border-l-2 border-[#10B981]/30 pl-6 ml-2 space-y-6">
+                            
+                            <!-- Node 1 -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#10B981] border-4 border-[#EFEFEF]"></div>
+                                <div class="dash-card p-5">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-7 h-7 rounded-lg bg-[#111315] text-white flex items-center justify-center font-bold text-xs">Z</div>
+                                            <div>
+                                                <h3 class="text-base font-bold text-[#111315]">Digital Marketing Intern</h3>
+                                                <p class="text-xs font-mono text-slate-500">Zynkly Private Limited</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-[10px] font-mono text-[#10B981] font-bold">Jun-Jul 2026</span>
+                                    </div>
+                                    <ul class="space-y-1.5 text-xs text-slate-600 list-disc list-inside mt-3">
+                                        <li>Surveyed 100+ respondents for ad campaign targeting.</li>
+                                        <li>Produced 15+ AI promotional videos (+20% engagement).</li>
+                                        <li>Launched 5+ targeted campaigns (+25% reach expansion).</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Node 2 -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#FF7043] border-4 border-[#EFEFEF]"></div>
+                                <div class="dash-card p-5">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-7 h-7 rounded-lg bg-[#FF7043] text-white flex items-center justify-center font-bold text-xs">CA</div>
+                                            <div>
+                                                <h3 class="text-base font-bold text-[#111315]">Accounts & Operations Trainee</h3>
+                                                <p class="text-xs font-mono text-slate-500">CA Davender Goyal | Jhunjhunu</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-[10px] font-mono text-[#FF7043] font-bold">Jun-Jul 2024</span>
+                                    </div>
+                                    <ul class="space-y-1.5 text-xs text-slate-600 list-disc list-inside mt-3">
+                                        <li>Managed GST documentation for 10+ client accounts.</li>
+                                        <li>Prepped and verified 20+ statutory audit files.</li>
+                                        <li>Performed MS Excel reconciliations across 50+ entries.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Academic Roadmap Column with LPU Emblem -->
+                    <div class="lg:col-span-5 space-y-6 reveal-item">
+                        <div>
+                            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#FFF0EC] text-[#C2410C] uppercase">ACADEMICS</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111315] mt-2 tracking-tight">
+                                Education
+                            </h2>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="dash-card p-5">
+                                <div class="flex justify-between items-start mb-1">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs border border-orange-200">LPU</div>
+                                        <div>
+                                            <h3 class="text-sm font-bold text-[#111315]">MBA</h3>
+                                            <p class="text-xs text-slate-500 font-mono">Lovely Professional University</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-[#10B981] font-bold">Since Aug 2025</span>
+                                </div>
+                                <p class="text-xs font-extrabold text-[#10B981] font-mono mt-2">CGPA: 7.0 / 10.0</p>
+                            </div>
+
+                            <div class="dash-card p-5">
+                                <div class="flex justify-between items-start mb-1">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs border border-orange-200">LPU</div>
+                                        <div>
+                                            <h3 class="text-sm font-bold text-[#111315]">B.Com</h3>
+                                            <p class="text-xs text-slate-500 font-mono">Lovely Professional University</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-slate-500">2022 - 2025</span>
+                                </div>
+                                <p class="text-xs font-extrabold text-[#10B981] font-mono mt-2">CGPA: 7.2 / 10.0</p>
+                            </div>
+
+                            <div class="dash-card p-5">
+                                <div class="flex justify-between items-start mb-1">
+                                    <div>
+                                        <h3 class="text-sm font-bold text-[#111315]">Intermediate</h3>
+                                        <p class="text-xs text-slate-500 font-mono">The Tagore School, Rajasthan</p>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-slate-500">2021 - 2022</span>
+                                </div>
+                                <p class="text-xs font-extrabold text-[#10B981] font-mono mt-2">Score: 80.0%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Tools, Capabilities & Certifications Section -->
+        <section id="skills" class="p-6 lg:p-8 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto space-y-8">
+                
+                <div class="reveal-item">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] uppercase">SKILLS & TECH STACK</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111315] mt-2 tracking-tight">
+                        Tools, Capabilities & Certifications
+                    </h2>
+                </div>
+
+                <!-- Skill Fill Bars Card -->
+                <div class="dash-card p-6 reveal-item">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-mono text-xs">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-700 font-semibold flex items-center gap-2">
+                                    <!-- Google Search Icon -->
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+                                    Google SEO & Keywords
+                                </span>
+                                <span class="text-[#10B981] font-bold">90%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                                <div class="skill-bar-inner h-full bg-[#10B981] rounded-full" data-width="90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-700 font-semibold flex items-center gap-2">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-[#FF7043]"></i>
+                                    AI Video Production
+                                </span>
+                                <span class="text-[#FF7043] font-bold">92%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                                <div class="skill-bar-inner h-full bg-[#FF7043] rounded-full" data-width="92%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-700 font-semibold flex items-center gap-2">
+                                    <!-- Excel Icon -->
+                                    <i class="fa-solid fa-file-excel text-[#10B981]"></i>
+                                    MS Excel Reconciliations
+                                </span>
+                                <span class="text-[#10B981] font-bold">88%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                                <div class="skill-bar-inner h-full bg-[#10B981] rounded-full" data-width="88%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-700 font-semibold flex items-center gap-2">
+                                    <i class="fa-solid fa-calendar-days text-[#FF7043]"></i>
+                                    Social Content Calendars
+                                </span>
+                                <span class="text-[#FF7043] font-bold">85%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                                <div class="skill-bar-inner h-full bg-[#FF7043] rounded-full" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications Row -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs reveal-item">
+                    <div class="p-4 rounded-xl dash-card flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#10B981] flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <span class="text-[#111315] font-bold block">Digital Marketing</span>
+                            <span class="text-slate-500">Lernx Certified</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl dash-card flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-[#2A85FF] flex items-center justify-center font-bold text-lg">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <span class="text-[#111315] font-bold block">Social Media Marketing</span>
+                            <span class="text-slate-500">LinkedIn Learning</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl dash-card flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-orange-100 text-[#FF7043] flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <div>
+                            <span class="text-[#111315] font-bold block">Digital Marketing Rev</span>
+                            <span class="text-slate-500">Coursera Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact CTA Section -->
+        <section id="contact" class="p-6 lg:p-8">
+            <div class="max-w-4xl mx-auto text-center space-y-6 reveal-item">
+                <div class="dash-card p-8 sm:p-12 rounded-3xl space-y-6">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] uppercase">// CONNECT & SCALE</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#111315] tracking-tight">
+                        Ready to Drive Measurable Growth?
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+                        Looking for a growth marketer or business operations specialist? Let's connect to discuss how I can deliver quantified results for your organization.
+                    </p>
+
+                    <div class="flex flex-wrap justify-center gap-4 pt-2">
+                        <a href="mailto:anmolsihag8@gmail.com" class="bg-[#10B981] hover:bg-[#059669] text-white font-extrabold px-6 py-3.5 rounded-xl text-xs font-mono shadow-pill transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>SEND EMAIL DIRECTLY</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/anmol-sihag04" target="_blank" class="bg-white hover:bg-slate-50 text-[#111315] px-6 py-3.5 rounded-xl text-xs font-mono font-bold border border-slate-200 transition-all shadow-sm flex items-center gap-2">
+                            <i class="fa-brands fa-linkedin text-[#10B981]"></i>
+                            <span>CONNECT ON LINKEDIN</span>
+                        </a>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100 flex flex-wrap justify-center gap-6 text-xs text-slate-500 font-mono">
+                        <div><i class="fa-solid fa-envelope text-[#10B981] mr-1.5"></i>anmolsihag8@gmail.com</div>
+                        <div><i class="fa-solid fa-phone text-[#FF7043] mr-1.5"></i>+91-8955447232</div>
+                    </div>
+                </div>
+
+                <div class="text-xs font-mono text-slate-400 pt-4">
+                    © 2026 Anmol Sihag • Growth Marketing & Operations Portfolio.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Project Modal Popup -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="dash-card max-w-xl w-full p-6 relative bg-white shadow-2xl">
+            <button onclick="closeProjectModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-xs border border-slate-200">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Dynamically filled -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Controller -->
+    <script>
+        let currentChartObj = null;
+
+        // Toggle Sidebar (Desktop & Mobile)
+        function toggleSidebar() {
+            document.body.classList.toggle('sidebar-collapsed');
+            const isCollapsed = document.body.classList.contains('sidebar-collapsed');
+            showToast('NAVIGATION', isCollapsed ? 'Sidebar navigation minimized' : 'Sidebar navigation expanded', 'fa-sidebar');
+        }
+
+        // Mobile Sidebar Toggle
+        function toggleMobileSidebar() {
+            toggleSidebar();
+        }
+
+        // Sidebar Navigation Links Highlight
+        function setActiveNav(element) {
+            document.querySelectorAll('.sidebar-link').forEach(link => link.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Toast System
+        function showToast(title, msg, iconClass = 'fa-check') {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-msg').textContent = msg;
+            document.getElementById('toast-icon').className = `fa-solid ${iconClass}`;
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Copy Email to Clipboard
+        function copyContactInfo() {
+            const textToCopy = 'anmolsihag8@gmail.com';
+            const tempInput = document.createElement('input');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast('EMAIL_COPIED', 'anmolsihag8@gmail.com copied to clipboard!');
+        }
+
+        // AI Growth Prompt Assistant
+        function executeAiPrompt(query) {
+            const input = (query || "").toLowerCase().trim();
+            const responseContainer = document.getElementById('ai-prompt-response');
+            
+            if (!input) return;
+
+            let answer = "";
+            if (input.includes("skill") || input.includes("tools")) {
+                answer = "⚡ **Anmol's Core Skills**: AI Video Content Generation, Google SEO & Keyword Clustering, MS Excel Financial Reconciliations, Canva Social Creatives, GTM Vendor Sourcing, and GST Tax Compliance.";
+            } else if (input.includes("zynkly") || input.includes("result") || input.includes("reach")) {
+                answer = "📈 **Zynkly Internship Impact**: Produced 15+ AI promotional videos driving a **20% engagement boost** and launching 5+ digital campaigns for a **25% reach expansion** across 100+ surveyed respondents.";
+            } else if (input.includes("audit") || input.includes("financial") || input.includes("excel")) {
+                answer = "📊 **Operations & Auditing**: Prepared **20+ statutory audit files**, performed **50+ MS Excel reconciliations**, and managed GST compliance for **10+ corporate accounts** with CA Davender Goyal.";
+            } else if (input.includes("contact") || input.includes("email") || input.includes("call")) {
+                answer = "✉️ **Direct Contact**: Email at **anmolsihag8@gmail.com** or phone at **+91-8955447232**. Click 'Copy Email' to save!";
+            } else {
+                answer = `🤖 **Core Engine Insight**: Anmol Sihag is an MBA graduate combining **Growth Marketing** (+20% AI video engagement) with **Financial Operations** (20+ audit files, 50+ reconciliations).`;
+            }
+
+            responseContainer.innerHTML = answer.replace(/\*\*(.*?)\*\*/g, '<span class="text-[#10B981] font-bold">$1</span>');
+            responseContainer.classList.remove('hidden');
+        }
+
+        // AI Showreel Studio Clip Switcher
+        const studioClips = {
+            1: {
+                thumb: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+                title: "Clip 01: Product Teaser Ad",
+                prompt: '"Generate high-tech dynamic SaaS product showcase highlighting automated workflow automation."',
+                metric: "+20% Engagement"
+            },
+            2: {
+                thumb: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80",
+                title: "Clip 02: Feature Highlight Clip",
+                prompt: '"Create 3D isometric animation illustrating customer research data insights across 100+ respondents."',
+                metric: "+25% Reach Boost"
+            },
+            3: {
+                thumb: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
+                title: "Clip 03: Social Media Story Ad",
+                prompt: '"Rhythmic punchy social ad format tailored for mobile feed conversion."',
+                metric: "30+ Creatives"
+            }
+        };
+
+        function selectStudioClip(clipNum) {
+            const clip = studioClips[clipNum];
+            document.getElementById('studio-video-thumb').src = clip.thumb;
+            document.getElementById('studio-clip-title').textContent = clip.title;
+            showToast('CLIP_LOADED', `Loaded ${clip.title}`);
+        }
+
+        function toggleStudioPlayback() {
+            showToast('VIDEO_PREVIEW', 'Playing AI promotional video preview reel...');
+        }
+
+        // Terminal Step Logs
+        const stepLogs = {
+            1: {
+                title: "WORKFLOW_LOG.STEP_01_RESEARCH",
+                content: `
+                    <p class="text-[#10B981] font-bold">> Conducted market research among 100+ target respondents.</p>
+                    <p class="text-slate-300">> Negotiated supply contracts with 10+ Rajasthan local suppliers.</p>
+                    <p class="text-slate-300">> Formulated 50+ target SEO keyword query clusters.</p>
+                `
+            },
+            2: {
+                title: "WORKFLOW_LOG.STEP_02_CONTENT",
+                content: `
+                    <p class="text-[#FF7043] font-bold">> Scripted & rendered 15+ AI promotional videos for Zynkly Pvt Ltd.</p>
+                    <p class="text-slate-300">> Built 4-week Instagram/Facebook content calendars.</p>
+                    <p class="text-[#10B981] font-bold">> [RESULT] Boosted organic engagement by 20% and reach by 25%.</p>
+                `
+            },
+            3: {
+                title: "WORKFLOW_LOG.STEP_03_AUDIT",
+                content: `
+                    <p class="text-[#10B981] font-bold">> Managed GST documentation for 10+ client corporate accounts.</p>
+                    <p class="text-slate-300">> Verified records and prepped 20+ statutory audit files.</p>
+                    <p class="text-slate-300">> Completed MS Excel reconciliations for 50+ transaction entries.</p>
+                `
+            }
+        };
+
+        function selectStep(stepNum) {
+            const data = stepLogs[stepNum];
+            document.getElementById('terminal-step-title').textContent = data.title;
+            document.getElementById('terminal-content').innerHTML = data.content;
+        }
+
+        // ROI Calculator Simulator
+        function updateSimulator() {
+            const budget = parseInt(document.getElementById('budget-slider').value);
+            const videos = parseInt(document.getElementById('videos-slider').value);
+            const channels = parseInt(document.getElementById('channels-slider').value);
+
+            document.getElementById('budget-val').textContent = `₹${budget.toLocaleString('en-IN')}`;
+            document.getElementById('videos-val').textContent = `${videos} Videos`;
+            document.getElementById('channels-val').textContent = `${channels} Channels`;
+
+            const estReach = Math.round((budget / 10) * (1 + (videos * 0.05)) * (1 + (channels * 0.15)));
+            const estEngagement = Math.round(estReach * 0.20);
+            const roiVal = (3.2 + (videos * 0.06) + (channels * 0.1)).toFixed(1);
+
+            document.getElementById('calc-reach').textContent = estReach.toLocaleString('en-IN');
+            document.getElementById('calc-engagement').textContent = estEngagement.toLocaleString('en-IN');
+            document.getElementById('calc-roi').textContent = `${roiVal}x`;
+        }
+
+        // Chart Datasets Configuration
+        const chartDatasets = {
+            growth: {
+                title: "ZYNKLY_CAMPAIGN_TRAJECTORY.DAT",
+                type: 'bar',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4 (Peak)'],
+                    datasets: [
+                        {
+                            label: 'Reach Expansion (+25%)',
+                            data: [12000, 18500, 24000, 32500],
+                            backgroundColor: '#10B981',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Engagement Lift (+20%)',
+                            data: [2500, 4200, 6800, 9500],
+                            backgroundColor: '#FF7043',
+                            borderRadius: 6
+                        }
+                    ]
+                }
+            },
+            sourcing: {
+                title: "BRAND_THE_ITEM_SUPPLIERS.DAT",
+                type: 'doughnut',
+                data: {
+                    labels: ['Local Suppliers', 'Offline Retail', 'Direct Channels', 'Reserves'],
+                    datasets: [{
+                        data: [45, 30, 15, 10],
+                        backgroundColor: ['#10B981', '#FF7043', '#2A85FF', '#94A3B8'],
+                        borderWidth: 2,
+                        borderColor: '#FFFFFF'
+                    }]
+                }
+            },
+            seo: {
+                title: "SEO_KEYWORD_DENSITY.DAT",
+                type: 'bar',
+                data: {
+                    labels: ['Informational', 'Commercial', 'Brand Terms', 'Local Rajasthan', 'Long-tail'],
+                    datasets: [{
+                        label: 'Keywords Targeted',
+                        data: [18, 14, 8, 7, 5],
+                        backgroundColor: '#10B981',
+                        borderRadius: 6
+                    }]
+                }
+            }
+        };
+
+        function renderChart(type, data) {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            if (currentChartObj) currentChartObj.destroy();
+
+            currentChartObj = new Chart(ctx, {
+                type: type,
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { family: 'Fira Code', size: 10 },
+                                color: '#475569'
+                            }
+                        }
+                    },
+                    scales: type === 'bar' ? {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#E2E8F0' },
+                            ticks: { font: { family: 'Fira Code', size: 10 }, color: '#64748B' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { family: 'Fira Code', size: 10 }, color: '#64748B' }
+                        }
+                    } : {}
+                }
+            });
+        }
+
+        function switchChart(chartKey) {
+            document.querySelectorAll('.chart-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`chart-tab-${chartKey}`).classList.add('active');
+
+            const chartConfig = chartDatasets[chartKey];
+            document.getElementById('chart-title-text').textContent = chartConfig.title;
+
+            renderChart(chartConfig.type, chartConfig.data);
+        }
+
+        // Project Category Filter
+        function filterProjects(category) {
+            document.querySelectorAll('.project-filter').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Project Modal Details
+        const projectModalData = {
+            'brand-the-item': {
+                title: "Brand the Item | Live GTM Venture",
+                tag: "GTM & Sourcing Strategy",
+                content: `
+                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                        "Brand the Item" was an intensive live commercial project centered around product sourcing, supplier negotiations, and brand positioning in Rajasthan, India.
+                    </p>
+                    <ul class="space-y-1.5 text-xs text-slate-700 font-mono list-disc list-inside">
+                        <li>Negotiated with <span class="text-[#10B981] font-bold">10+ local suppliers</span>.</li>
+                        <li>Evaluated sales workflows across <span class="text-[#FF7043] font-bold">3 retail distribution channels</span>.</li>
+                        <li>Formulated complete brand identity and GTM strategy.</li>
+                    </ul>
+                `
+            },
+            'zynkly-campaign': {
+                title: "Zynkly AI Promotional Campaign",
+                tag: "Zynkly Private Limited",
+                content: `
+                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                        Digital marketing internship focused on audience research and AI video ad production to scale brand reach.
+                    </p>
+                    <ul class="space-y-1.5 text-xs text-slate-700 font-mono list-disc list-inside">
+                        <li>Surveyed <span class="text-[#10B981] font-bold">100+ target respondents</span>.</li>
+                        <li>Crafted <span class="text-[#FF7043] font-bold">15+ AI promotional videos</span> (+20% engagement).</li>
+                        <li>Launched 5+ campaigns delivering a <span class="text-[#10B981] font-bold">25% reach expansion</span>.</li>
+                    </ul>
+                `
+            },
+            'digital-marketing-suite': {
+                title: "Digital Marketing Campaign Suite",
+                tag: "SEO & Social Media",
+                content: `
+                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                        Practice suite focused on graphic design, multi-platform social calendar scheduling, and SEO optimization.
+                    </p>
+                    <ul class="space-y-1.5 text-xs text-slate-700 font-mono list-disc list-inside">
+                        <li>Designed <span class="text-[#10B981] font-bold">30+ social media graphics</span> on Canva.</li>
+                        <li>Built 4-week Instagram & Facebook content calendars.</li>
+                        <li>Researched 50+ SEO target keyword search clusters.</li>
+                    </ul>
+                `
+            },
+            'godwish-project': {
+                title: "GodWish Welfare Foundation Drive",
+                tag: "Community Outreach",
+                content: `
+                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                        Community drive in Rajasthan managing resource distribution and awareness programs.
+                    </p>
+                    <ul class="space-y-1.5 text-xs text-slate-700 font-mono list-disc list-inside">
+                        <li>Engaged <span class="text-[#10B981] font-bold">500+ residents</span> through drives.</li>
+                        <li>Coordinated 5+ tree plantation events.</li>
+                        <li>Supported <span class="text-[#FF7043] font-bold">200+ families</span> with food and supplies.</li>
+                    </ul>
+                `
+            }
+        };
+
+        function openProjectModal(id) {
+            const data = projectModalData[id];
+            if (!data) return;
+
+            const modalBody = document.getElementById('modal-body');
+            modalBody.innerHTML = `
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-[#ECFDF5] text-[#065F46] inline-block mb-3">${data.tag}</span>
+                <h3 class="text-xl font-bold text-[#111315] mb-3">${data.title}</h3>
+                ${data.content}
+                <div class="pt-4 mt-4 border-t border-slate-100 flex justify-end">
+                    <button onclick="closeProjectModal()" class="bg-[#111315] text-white px-4 py-2 rounded-xl text-xs font-mono font-bold">Close Window</button>
+                </div>
+            `;
+
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Initialize DOM observers and listeners
+        window.addEventListener('DOMContentLoaded', () => {
+            switchChart('growth');
+            selectStep(1);
+
+            // Scroll progress bar listener
+            window.addEventListener('scroll', () => {
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (window.scrollY / totalHeight) * 100;
+                document.getElementById('scroll-progress').style.width = `${progress}%`;
+            });
+
+            // Contextual Section Toast Popups on Scroll
+            const sectionToastTriggers = [
+                { id: 'visualizations', title: 'METRICS_ENGINE_LOADED', msg: 'Interactive Chart.js campaign data active.', icon: 'fa-chart-line' },
+                { id: 'simulator', title: 'ROI_CALCULATOR_READY', msg: 'Adjust sliders to simulate campaign performance.', icon: 'fa-sliders' },
+                { id: 'ai-studio', title: 'AI_STUDIO_READY', msg: 'Select AI promo clips to preview.', icon: 'fa-clapperboard' },
+                { id: 'projects', title: 'PORTFOLIO_LOADED', msg: 'Showing 4 verified live marketing & audit projects.', icon: 'fa-folder-open' }
+            ];
+
+            const triggeredSections = new Set();
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const matched = sectionToastTriggers.find(item => item.id === entry.target.id);
+                        if (matched && !triggeredSections.has(matched.id)) {
+                            triggeredSections.add(matched.id);
+                            showToast(matched.title, matched.msg, matched.icon);
+                        }
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            sectionToastTriggers.forEach(item => {
+                const el = document.getElementById(item.id);
+                if (el) sectionObserver.observe(el);
+            });
+
+            // General Scroll Reveal Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+
+                        entry.target.querySelectorAll('.pop-in-trigger').forEach(el => el.classList.add('popped'));
+
+                        const skillBars = entry.target.querySelectorAll('.skill-bar-inner');
+                        skillBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            if (width) bar.style.width = width;
+                        });
+
+                        const counters = entry.target.querySelectorAll('.counter-number');
+                        counters.forEach(counter => {
+                            const target = parseInt(counter.getAttribute('data-target'));
+                            let current = 0;
+                            const step = Math.ceil(target / 25);
+                            const timer = setInterval(() => {
+                                current += step;
+                                if (current >= target) {
+                                    counter.textContent = target;
+                                    clearInterval(timer);
+                                } else {
+                                    counter.textContent = current;
+                                }
+                            }, 40);
+                        });
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
